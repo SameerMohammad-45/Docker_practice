@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+     
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('bg.jpg') center/cover no-repeat; /* Background image */
+    color: #333;
+}
+
+/* Glass Effect for All Sections */
+.section {
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 40px 20px; /* Adjust padding */
+    margin: 20px; /* Space between sections */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    text-align: center;
+    min-height: 100vh; /* Ensures each section takes at least full viewport height */
+    opacity: 0; /* Hidden by default for animation */
+    transform: translateY(20px); /* Slide effect */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Animation smoothness */
+    /* Added padding-top to prevent overlap with fixed header */
+    padding-top: calc(40px + 60px); /* 40px is the original padding, 60px is the height of the header */
+}
+
+.section.active {
+    opacity: 1;
+    transform: translateY(0); /* Activated state */
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.6); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    color: white;
+    z-index: 1000; /* Ensures header stays above other elements */
+}
+
+
+.nav-left, .nav-right {
+    display: flex;
+}
+
+.nav-left a, .nav-right a {
+    color: #5B5EA6;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+    font-weight: bold; /* Make the text bold */
+    font-size: 16px; /* Increase font size (adjust as needed) */
+}
+
+
+.nav-left a:hover, .nav-right a:hover {
+    color: #ff6347;
+}
+
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('1704894258454-EDIT.jpg') center/cover no-repeat; /* Background image */
+    color: #45B8AC;
+    min-height: 100vh; /* Ensures hero section takes full viewport height */
+    display: flex; /* Added for centering content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack child elements vertically */
+    position: relative; /* Added for positioning context */
+    overflow: hidden; /* Prevents overflow from background image */
+}
+
+.hero-heading {
+    font-size: 56px; /* Increase font size for the name */
+    font-weight: bold; /* Make the name bold */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-transform: uppercase; /* Transform text to uppercase */
+    letter-spacing: 4px; /* Add spacing between letters */
+    margin: 0; /* Remove default margin */
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateX(100%); /* Start position (off-screen right) */
+    animation: slideInRight 0.7s forwards; /* Animation for the heading */
+    animation-delay: 0.7s; /* Delay before the heading animation starts */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* Text shadow for depth */
+}
+
+.hero-description {
+    font-size: 24px; /* Increase font size for description */
+    font-style: italic; /* Make the description italic */
+    margin-top: 10px; /* Space above the description */
+    opacity: 0; /* Initially hidden for animation */
+    transform: translateX(-100%); /* Start position (off-screen left) */
+    animation: slideInLeft 0.7s forwards; /* Animation for the description */
+    animation-delay: 1s; /* Delay before the description animation starts */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+
+.hero-content {
+    text-align: center; /* Center text in the hero section */
+    margin-top: 20%; /* Adjust vertical position */
+}
+
+@keyframes slideInRight {
+    to {
+        opacity: 1; /* Fade to visible */
+        transform: translateX(0); /* Move to the final position */
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1; /* Fade to visible */
+        transform: translateX(0); /* Move to the final position */
+    }
+}
+
+
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 2em;
+    margin: 20px 0;
+}
+
+.section p, .section ul {
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.skills ul, .certifications ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skills ul li, .certifications ul li {
+    margin: 10px 0;
+}
+
+
+.skills-container {
+    display: flex; /* Use Flexbox for layout */
+    justify-content: space-between; /* Space between columns */
+    margin-top: 13px; /* Space above the skills columns */
+}
+
+.certifications {
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 90px; /* Inner padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    margin: 20px; /* Space around the certifications section */
+    text-align: center; /* Center align text */
+}
+
+.certifications h2 {
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+.certifications ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+.certifications li {
+    margin: 10px 0; /* Space between list items */
+}
+
+.certifications a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.certifications a:hover {
+    color: #ff4500; /* Darker shade on hover */
+}
+
+
+.technical-skills, .soft-skills {
+    flex: 1; /* Equal width for both sections */
+    margin: 0 10px; /* Space between columns */
+    background: rgba(255, 255, 255, 0.2); /* Slightly transparent background */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+}
+
+
+.about {
+    display: flex;
+    flex-direction: column; /* Stack the heading on top */
+    align-items: center; /* Center align items horizontally */
+    margin: 20px; /* Space around the about section */
+}
+
+.about-heading {
+    margin-bottom: 20px; /* Space between heading and content */
+}
+
+.about-container {
+    display: flex; /* Keep the details side by side */
+    justify-content: space-between; /* Space out the frames */
+    width: 100%; /* Make sure it takes the full width */
+    max-width: 1200px; /* Optional: limit the max width */
+}
+
+.about-left, .about-middle, .about-right {
+    flex: 1; /* Allow equal space for each section */
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    margin: 0 10px; /* Space between frames */
+}
+
+.about-left {
+    text-align: left;
+}
+
+.education-container, .resume-container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.education-container {
+    margin-bottom: 10px; /* Space below education container */
+}
+
+
+h3 {
+    font-size: 1.5em; /* Adjusted size for subheadings */
+}
+
+.skills ul {
+    margin-top: 10px; /* Space above the lists */
+}
+
+
+.contact {
+    display: flex; /* Use Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align all content */
+    text-align: center; /* Center align text */
+    background: rgba(255, 255, 255, 0.2); /* Glass effect */
+    backdrop-filter: blur(5px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+    padding: 200px; /* Adjusted inner padding for a better look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    margin: 20px; /* Space around the contact section */
+    margin-top: 100px; /* Increased space above the contact section */
+}
+
+
+.social-links {
+    display: flex; /* Use Flexbox for layout */
+    justify-content: center; /* Center the logos */
+    margin-top: 15px; /* Space above the social links */
+}
+
+.social-links a {
+    margin: 0 10px; /* Space between logos */
+}
+
+
+.social-logo {
+    width: 70px; /* Set logo width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+.contact a {
+    color: white; /* Link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.contact a:hover {
+    color: #ff4500; /* Darker shade on hover */
+}
+
+
+.contact p {
+    margin: 10px 0; /* Space between paragraphs */
+}
+
+
+footer {
+    text-align: center; /* Center footer text */
+    padding: 20px; /* Space around footer */
+    background-color: #333; /* Footer background color */
+    color: white; /* Footer text color */
+}
+
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column; /* Stack the about sections vertically */
+    }
+
+    .about-left, .about-right {
+        flex: none; /* Reset flex for smaller screens */
+    }
+}
+    </style>
+    <title>Portfolio</title>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <a href="#home">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+        </div>
+        <div class="nav-right">
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+  <div id="home" class="section hero">
+    <div class="hero-content">
+        <h2 class="hero-heading">SAMEER MOHAMMAD</h2>
+       
+        <p class="hero-description">"Aspiring Software Engineer: Passionate About Enhancing Development Through Testing and DevOps."</p>
+    </div>
+</div>
+
+
+    
+    <div id="about" class="section about">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="about-left">
+                <p>I am an aspiring software engineer with a Masters degree in Computer Applications from Nizam College. I have strong skills in Java development, software testing, and automation testing.</p>
+                <p>I have worked on academic projects, including 'Active City Administration' and 'Drowsiness Detection System,' where I gained experience in software development and practical applications.</p>
+                <p>In my free time, I enjoy playing chess and watching cricket, which helps me think strategically and keep my mind sharp.</p>
+            </div>
+            <div class="about-right">
+                <div class="education-container">
+                    <h3>Education</h3>
+                    <p>Master of Computer Applications from Nizam College</p>
+                </div>
+                <div class="resume-container">
+                    <h3>Resume</h3>
+                    <p><a href="https://drive.google.com/file/d/1X0iJyBitl5KEN9rVB9TB681Yf-Jel21P/view?usp=drive_link" target="_blank">View My Resume</a></p> 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="section skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="technical-skills">
+                <h3>Technical Skills</h3>
+                <ul>
+                    <li>Programming Language: Java</li>
+                    <li>Web Development: HTML, CSS, JavaScript</li>
+                    <li>Database: MySQL</li>
+                    <li>Manual Testing: Test case creation, bug reporting, SDLC, JIRA tool, Agile development</li>
+                    <li>Automation Testing: Selenium, TestNG</li>
+                    <li>API Testing: Postman</li>
+                    <li>SCM: Git, GitHub, Bitbucket</li>
+                </ul>
+            </div>
+            <div class="soft-skills">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Good communication</li>
+                    <li>Team player</li>
+                    <li>Time management</li>
+                    <li>Troubleshooting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="certifications" class="section certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li><a href="https://drive.google.com/file/d/13siOvcmsCAXfoDAQxn8KkWdYWKUxOwOA/view">Certification in SQL Programming</a></li>
+            <li><a href="https://drive.google.com/file/d/1ba-StKKI0NN1P329-Z9QB9HZcfCV-Tz6/view">Certification in Software Testing Training</a></li>
+            <li>Undergoing certification in DevOps training by FrontlineMedia Edutech</li>
+        </ul>
+    </div>
+<div id="contact" class="section contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:sameermd1802@gmail.com">sameermd1802@gmail.com</a></p>
+    <p>Phone: <a href="tel:9959346211">9959346211</a></p>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/mohammadsameer1802/" target="_blank">
+            <img src="linkedinlogo.png" alt="LinkedIn" class="social-logo">
+        </a>
+        <a href="https://github.com/SameerMohammad-45" target="_blank">
+            <img src="github.jpeg" alt="GitHub" class="social-logo">
+        </a>
+        <a href="https://www.instagram.com/the_lazy_soul_._/" target="_blank">
+            <img src="instalogo.jpeg" alt="Instagram" class="social-logo">
+        </a>
+    </div>
+</div>
+
+    
+    <script>
+      // Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // Scroll to the section
+        const targetSection = document.querySelector(this.getAttribute('href'));
+        targetSection.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Reset animation for the hero section if the Home link is clicked
+        if (this.getAttribute('href') === '#home') {
+            resetAnimation();
+        }
+    });
+});
+
+// Scroll Animation for Other Sections
+const sections = document.querySelectorAll('.section');
+
+function revealSections() {
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight - 50) {
+            section.classList.add('active');
+        }
+    });
+}
+
+// Reset Animation
+function resetAnimation() {
+    const heading = document.querySelector('.hero-heading');
+    const description = document.querySelector('.hero-description');
+
+    // Remove transition styles to prevent animations on hide
+    heading.style.transition = 'none';
+    description.style.transition = 'none';
+
+    // Set styles to hide the elements immediately
+    heading.style.opacity = '0';
+    heading.style.transform = 'translateX(100%)'; // Move out to the right
+    description.style.opacity = '0';
+    description.style.transform = 'translateX(-100%)'; // Move out to the left
+
+    // Trigger reflow to reset animations (optional)
+    void heading.offsetWidth; // This is here just to ensure a reflow occurs
+    void description.offsetWidth; // This is here just to ensure a reflow occurs
+
+    // Add transition styles back
+    heading.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    description.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+
+    // Start animations for the next time
+    setTimeout(() => {
+        heading.style.opacity = '1';
+        heading.style.transform = 'translateX(0)';
+        description.style.opacity = '1';
+        description.style.transform = 'translateX(0)';
+    }, 10); // Short timeout to allow transition to take effect
+}
+
+// Add event listeners
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections); // Also reveal sections on load
+    </script>
+</body>
+</html>
