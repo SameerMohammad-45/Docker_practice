@@ -1,5 +1,5 @@
 FROM nginix
 MAINTAINER name SAMEER
-LABEL Portfolio
+LABEL this is my portfolio
 WORKDIR /root/sameer
 COPY index.html /usr/share/nginix/html
