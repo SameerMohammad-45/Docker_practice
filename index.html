@@ -1,109 +1,131 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Horror Themed Page</title>
+    <style>
+        body {
+            background-color: #2b2b2b;
+            color: #fff;
+            font-family: 'Creepster', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+        
+        h1 {
+            font-size: 4rem;
+            color: red;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.5);
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #e0e0e0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .blinking-text {
+            animation: blink 1.5s steps(5, start) infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .creepy-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/1600x900/?horror,scary') no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(5px);
+            z-index: -1;
+        }
+
+        .sound-effect {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: crimson;
+            display: none;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #900;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #f00;
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+        .animation-text {
+            font-size: 2rem;
+            color: #ff0;
+            animation: pulse-text 2s infinite alternate;
+        }
+
+        @keyframes pulse-text {
+            0% {
+                color: #ff0;
+                text-shadow: 0 0 20px rgba(255, 255, 0, 0.7);
+            }
+            100% {
+                color: crimson;
+                text-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <header>
-        <div class="nav-left">
-            <a href="#home">Home</a>
-            <a href="#about">About Me</a>
-            <a href="#skills">Skills</a>
-            <a href="#certifications">Certifications</a>
-        </div>
-        <div class="nav-right">
-            <a href="#contact">Contact</a>
-        </div>
-    </header>
+    <div class="creepy-background"></div>
+    <h1>Welcome to the Haunted House</h1>
+    <p class="blinking-text">You may never escape...</p>
 
-  <div id="home" class="section hero">
-    <div class="hero-content">
-        <h2 class="hero-heading">SAMEER MOHAMMAD</h2>
-       
-        <p class="hero-description">"Aspiring Software Engineer: Passionate About Enhancing Development Through Testing and DevOps."</p>
-    </div>
-</div>
+    <div class="sound-effect" id="soundEffect">Screams heard in the distance...</div>
 
+    <button class="button" id="showTextBtn">Click if you dare...</button>
 
-    
-    <div id="about" class="section about">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <div class="about-left">
-                <p>I am an aspiring software engineer with a Masters degree in Computer Applications from Nizam College. I have strong skills in Java development, software testing, and automation testing.</p>
-                <p>I have worked on academic projects, including 'Active City Administration' and 'Drowsiness Detection System,' where I gained experience in software development and practical applications.</p>
-                <p>In my free time, I enjoy playing chess and watching cricket, which helps me think strategically and keep my mind sharp.</p>
-            </div>
-            <div class="about-right">
-                <div class="education-container">
-                    <h3>Education</h3>
-                    <p>Master of Computer Applications from Nizam College</p>
-                </div>
-                <div class="resume-container">
-                    <h3>Resume</h3>
-                    <p><a href="https://drive.google.com/file/d/1X0iJyBitl5KEN9rVB9TB681Yf-Jel21P/view?usp=drive_link" target="_blank">View My Resume</a></p> 
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="animation-text" id="animationText"></div>
 
-    <div id="skills" class="section skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="technical-skills">
-                <h3>Technical Skills</h3>
-                <ul>
-                    <li>Programming Language: Java</li>
-                    <li>Web Development: HTML, CSS, JavaScript</li>
-                    <li>Database: MySQL</li>
-                    <li>Manual Testing: Test case creation, bug reporting, SDLC, JIRA tool, Agile development</li>
-                    <li>Automation Testing: Selenium, TestNG</li>
-                    <li>API Testing: Postman</li>
-                    <li>SCM: Git, GitHub, Bitbucket</li>
-                </ul>
-            </div>
-            <div class="soft-skills">
-                <h3>Soft Skills</h3>
-                <ul>
-                    <li>Good communication</li>
-                    <li>Team player</li>
-                    <li>Time management</li>
-                    <li>Troubleshooting</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <script>
+        // JavaScript to handle interaction
+        const button = document.getElementById('showTextBtn');
+        const soundEffect = document.getElementById('soundEffect');
+        const animationText = document.getElementById('animationText');
 
-    <div id="certifications" class="section certifications">
-        <h2>Certifications</h2>
-        <ul>
-            <li><a href="https://drive.google.com/file/d/13siOvcmsCAXfoDAQxn8KkWdYWKUxOwOA/view">Certification in SQL Programming</a></li>
-            <li><a href="https://drive.google.com/file/d/1ba-StKKI0NN1P329-Z9QB9HZcfCV-Tz6/view">Certification in Software Testing Training</a></li>
-            <li>Undergoing certification in DevOps training by FrontlineMedia Edutech</li>
-        </ul>
-    </div>
-<div id="contact" class="section contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:sameermd1802@gmail.com">sameermd1802@gmail.com</a></p>
-    <p>Phone: <a href="tel:9959346211">9959346211</a></p>
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/mohammadsameer1802/" target="_blank">
-            <img src="linkedinlogo.png" alt="LinkedIn" class="social-logo">
-        </a>
-        <a href="https://github.com/SameerMohammad-45" target="_blank">
-            <img src="github.jpeg" alt="GitHub" class="social-logo">
-        </a>
-        <a href="https://www.instagram.com/the_lazy_soul_._/" target="_blank">
-            <img src="instalogo.jpeg" alt="Instagram" class="social-logo">
-        </a>
-    </div>
-</div>
+        // Play sound effect and show animation text on button click
+        button.addEventListener('click', function() {
+            soundEffect.style.display = 'block';
+            setTimeout(function() {
+                soundEffect.style.display = 'none';
+            }, 4000);
 
-    
+            animationText.innerHTML = "You are trapped here forever...";
+        });
+    </script>
 </body>
 </html>
